@@ -1,4 +1,5 @@
 require 'watir'
+require 'headless'
 #to run, call with command line args for num of days to advance, usrname, password
 
 
@@ -16,6 +17,8 @@ pswd = ARGV[2]
 
 #open the browser
 Watir.relaxed_locate = false
+headless = Headless.new
+#headless.start
 browser = Watir::Browser.new :chrome
 #go to website and login
 browser.goto 'https://dj.wmhdradio.org/login'
@@ -55,6 +58,7 @@ table_element = "fc-" + dow + " fc-col0 ui-widget-content"
 #sometimes has fc-last
 table_element_2 = table_element + " fc-last"
 
+clicked = false
 
 #iterate through shows table
 shows.each do |key, val|
@@ -73,6 +77,28 @@ shows.each do |key, val|
   #click to add content
   browser.element(:xpath, "//span[text() = 'Add / Remove Content']").click
   sleep(1)
+  #add WMHD tagline
+  #click search box
+  browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").click
+  sleep(1)
+  #send search terms
+  browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").send_keys "WMHDRadio1"
+  #click checkbox
+  sleep(1)
+  if !clicked
+    browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']").click
+    clicked = true
+  end
+  #attempt to add to show. if failed is because show is full, will continue
+  begin
+    browser.button(:id, "library-plus").click
+  rescue Watir::Exception::ObjectDisabledException
+    #continue
+  end
+  sleep(1)
+
+  browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").to_subtype.clear
+
   #search for smart block
   #select smart block type
   browser.element(:xpath, "//select[@name = 'library_display_type']").option(:value, "3").click
@@ -91,14 +117,21 @@ shows.each do |key, val|
     browser.button(:id, "library-plus").click
   rescue Watir::Exception::ObjectDisabledException
     #continue
-end
-sleep(1)
+  end
+  sleep(1)
 
-#unclick box
-browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']").click
+  #unclick box
+  browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']").click
 
-#exit out
-browser.element(:xpath, "//div[@class = 'ui-dialog-buttonset']/button").click
+  #exit out
+  browser.element(:xpath, "//div[@class = 'ui-dialog-buttonset']/button").click
 sleep(2)
 end
-sleep(10)
+
+
+
+sleep(5)
+
+#close browser and destroy headless
+browser.close
+headless.destroy
