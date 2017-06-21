@@ -1,5 +1,6 @@
 require 'watir'
 require 'headless'
+puts "starting"
 #to run, call with command line args for num of days to advance, usrname, password
 
 
@@ -14,18 +15,20 @@ day_advance = ARGV[0].to_i
 usrnm = ARGV[1]
 pswd = ARGV[2]
 
+File.open("log.txt", 'a') { |file| file.write("starging\n ") }
 
-#open the browser
+
+#open the browser, start headless
 Watir.relaxed_locate = false
 headless = Headless.new
-#headless.start
+headless.start
 browser = Watir::Browser.new :chrome
 #go to website and login
 browser.goto 'https://dj.wmhdradio.org/login'
 browser.text_field(:name, "username").set(usrnm)
 browser.text_field(:name, "password").set(pswd)
 browser.button(:name, "submit").click
-
+sleep(1)
 #go to calendar
 browser.link(:text, "Calendar").click
 
@@ -77,6 +80,8 @@ shows.each do |key, val|
   #click to add content
   browser.element(:xpath, "//span[text() = 'Add / Remove Content']").click
   sleep(1)
+
+
   #add WMHD tagline
   #click search box
   browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").click
@@ -112,7 +117,7 @@ shows.each do |key, val|
   #click the block
   browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']").click
 
-  #click add to show button
+  #attempt to add to show. if failed show is full
   begin
     browser.button(:id, "library-plus").click
   rescue Watir::Exception::ObjectDisabledException
