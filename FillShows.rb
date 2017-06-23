@@ -6,7 +6,7 @@ puts "starting"
 
 #hash of shows, listed by hour => smart block search terms
 shows = {2 => "Smart Block Electronic", 4 => "Smart Block Metal", 6 => "Smart Block Classical",
-         8 => "Smart Block Jazz", 10 => "Smart Block Everything", 12 => "Smart Block Everything",
+         8 => "Smart Block Jazz", 10 => "2hrSmartBlockEverything", 12 => "1hrSmartBlockEverything",
          13 => "Smart Block Rock", 15 => "Smart Block Country", 17 => "Smart Block Pop",
          19 => "Smart Block Alt", 23 => "Smart Block Rhythm"}
 
