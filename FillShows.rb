@@ -8,14 +8,15 @@ puts "starting"
 shows = {2 => "Smart Block Electronic", 4 => "Smart Block Metal", 6 => "Smart Block Classical",
          8 => "Smart Block Jazz", 10 => "2hrSmartBlockEverything", 12 => "1hrSmartBlockEverything",
          13 => "Smart Block Rock", 15 => "Smart Block Country", 17 => "Smart Block Pop",
-         19 => "Smart Block Alt", 23 => "Smart Block Rhythm"}
+         19 => "4hrAltIndie", 20 => "3hrAltIndie", 21 => "2hrAltIndie", 22 => "1hrAltIndie",  23 => "Smart Block Rhythm"}
 
 #take arg for what day in advance to fill
 day_advance = ARGV[0].to_i
 usrnm = ARGV[1]
 pswd = ARGV[2]
 
-File.open("log.txt", 'a') { |file| file.write("starging\n ") }
+File.open("log.txt", 'a') { |file| file.write("starging \n ") }
+
 
 
 #open the browser, start headless
@@ -33,6 +34,7 @@ sleep(1)
 browser.link(:text, "Calendar").click
 
 
+sleep(1)
 #click on day
 begin
 browser.span(:class, "fc-button fc-button-agendaDay ui-state-default ui-corner-left ui-corner-right ui-state-active").click
@@ -136,6 +138,9 @@ end
 
 
 sleep(5)
+
+File.open('Airtime.html', 'w') {|f| f.write browser.html }
+
 
 #close browser and destroy headless
 browser.close
