@@ -15,9 +15,6 @@ day_advance = ARGV[0].to_i
 usrnm = ARGV[1]
 pswd = ARGV[2]
 
-File.open("log.txt", 'a') { |file| file.write("starging \n ") }
-
-
 
 #open the browser, start headless
 Watir.relaxed_locate = false
