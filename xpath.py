@@ -6,7 +6,6 @@ import sys
 
 def send_email(user, pwd, recipient):
 
-
     gmail_user = user
     gmail_pwd = pwd
     FROM = user
@@ -48,11 +47,13 @@ shows = tree.xpath('//div[@class = "fc-event-content"]/div[@class="fc-event-titl
 
 filled = tree.xpath('//div[@class="ui-progressbar ui-widget ui-widget-content ui-corner-all"]/@aria-valuenow')
 
-flag = True
+flag = False
+
+print filled
 
 for x in range(0, len(filled)):
-    if filled[x] != 100:
-        flag = False
+    if filled[x] != '100':
+        flag = True
 
 print flag
 

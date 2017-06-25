@@ -136,7 +136,7 @@ end
 
 sleep(5)
 
-File.open('~/Scripts/WMHD-WebScripts/Airtime.html', 'w') {|f| f.write browser.html }
+File.open('/Scripts/WMHD-WebScripts/Airtime.html', 'w') {|f| f.write browser.html }
 
 
 #close browser and destroy headless
