@@ -36,7 +36,7 @@ print eml
 print passs
 print dstemail
 try:
-    page = urllib.urlopen("Airtime.html").read()
+    page = urllib.urlopen("Scripts/WMHD-WebScripts/Airtime.html").read()
 except:
     send_email(eml, passs, dstemail)
 
