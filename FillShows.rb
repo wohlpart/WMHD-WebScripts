@@ -5,10 +5,12 @@ puts "starting"
 
 
 #hash of shows, listed by hour => smart block search terms
-shows = {2 => "Smart Block Electronic", 4 => "Smart Block Metal", 6 => "Smart Block Classical",
-         8 => "Smart Block Jazz", 10 => "2hrSmartBlockEverything", 12 => "1hrSmartBlockEverything",
-         13 => "Smart Block Rock", 15 => "Smart Block Country", 17 => "Smart Block Pop",
-         19 => "4hrAltIndie", 20 => "3hrAltIndie", 21 => "2hrAltIndie", 22 => "1hrAltIndie",  23 => "Smart Block Rhythm"}
+#shows = {2 => "Smart Block Electronic", 4 => "Smart Block Metal", 6 => "Smart Block Classical",
+#         8 => "Smart Block Jazz", 10 => "2hrSmartBlockEverything", 12 => "1hrSmartBlockEverything",
+  #       13 => "Smart Block Rock", 15 => "Smart Block Country", 17 => "Smart Block Pop",
+   #      19 => "4hrAltIndie", 20 => "3hrAltIndie", 21 => "2hrAltIndie", 22 => "1hrAltIndie",  23 => "Smart Block Rhythm"}
+
+shows = ["1hrRhythmSmartBlock", "1hrRhythmSmartBlock", "1hrElectronicSmartBlock",  "1hrElectronicSmartBlock", "1hrMetalSmartBlock", "1hrMetalSmartBlock", "1hrClassicalSmartBlock", "1hrClassicalSmartBlock", "1hrJazzSmartBlock", "1hrJazzSmartBlock", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrRockSmartBlock", "1hrRockSmartBlock", "1hrCountrySmartBlock", "1hrCountrySmartBlock", "1hrSmartBlockPop", "1hrSmartBlockPop", "1hrAltIndie",  "1hrAltIndie", "1hrAltIndie", "1hrAltIndie", "1hrRhythmSmartBlock"]
 
 #take arg for what day in advance to fill
 day_advance = ARGV[0].to_i
@@ -63,7 +65,8 @@ table_element_2 = table_element + " fc-last"
 clicked = false
 
 #iterate through shows table
-shows.each do |key, val|
+key = 0
+shows.each do |val|
 
 #click on show
   begin
@@ -129,6 +132,7 @@ shows.each do |key, val|
 
   #exit out
   browser.element(:xpath, "//div[@class = 'ui-dialog-buttonset']/button").click
+  key = key + 1
 sleep(2)
 end
 
