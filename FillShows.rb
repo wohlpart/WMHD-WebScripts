@@ -15,7 +15,7 @@ pswd = ARGV[2]
 #open the browser, start headless
 Watir.relaxed_locate = false
 headless = Headless.new
-#headless.start
+headless.start
 browser = Watir::Browser.new :chrome
 #go to website and login
 browser.goto 'https://dj.wmhdradio.org/login'
