@@ -4,12 +4,6 @@ puts "starting"
 #to run, call with command line args for num of days to advance, usrname, password
 
 
-#hash of shows, listed by hour => smart block search terms
-#shows = {2 => "Smart Block Electronic", 4 => "Smart Block Metal", 6 => "Smart Block Classical",
-#         8 => "Smart Block Jazz", 10 => "2hrSmartBlockEverything", 12 => "1hrSmartBlockEverything",
-  #       13 => "Smart Block Rock", 15 => "Smart Block Country", 17 => "Smart Block Pop",
-   #      19 => "4hrAltIndie", 20 => "3hrAltIndie", 21 => "2hrAltIndie", 22 => "1hrAltIndie",  23 => "Smart Block Rhythm"}
-
 shows = ["1hrRhythmSmartBlock", "1hrRhythmSmartBlock", "1hrElectronicSmartBlock",  "1hrElectronicSmartBlock", "1hrMetalSmartBlock", "1hrMetalSmartBlock", "1hrClassicalSmartBlock", "1hrClassicalSmartBlock", "1hrJazzSmartBlock", "1hrJazzSmartBlock", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrRockSmartBlock", "1hrRockSmartBlock", "1hrCountrySmartBlock", "1hrCountrySmartBlock", "1hrSmartBlockPop", "1hrSmartBlockPop", "1hrAltIndie",  "1hrAltIndie", "1hrAltIndie", "1hrAltIndie", "1hrRhythmSmartBlock"]
 
 #take arg for what day in advance to fill
