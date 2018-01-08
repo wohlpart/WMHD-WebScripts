@@ -3,8 +3,8 @@ require 'headless'
 puts "starting"
 #to run, call with command line args for num of days to advance, usrname, password
 
-
-shows = ["1hrRhythmSmartBlock", "1hrRhythmSmartBlock", "1hrElectronicSmartBlock",  "1hrElectronicSmartBlock", "1hrMetalSmartBlock", "1hrMetalSmartBlock", "1hrClassicalSmartBlock", "1hrClassicalSmartBlock", "1hrJazzSmartBlock", "1hrJazzSmartBlock", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrRockSmartBlock", "1hrRockSmartBlock", "1hrCountrySmartBlock", "1hrCountrySmartBlock", "1hrSmartBlockPop", "1hrSmartBlockPop", "1hrAltIndie",  "1hrAltIndie", "1hrAltIndie", "1hrAltIndie", "1hrRhythmSmartBlock"]
+shows = ["RapHipHop", "Metal", "Everything", "Classical", "Jazz", "Pop", "Rock", "Everything", "Country", "Electronic", "Pop", "Rock", "Alt"]
+#shows = ["1hrRhythmSmartBlock", "1hrRhythmSmartBlock", "1hrElectronicSmartBlock",  "1hrElectronicSmartBlock", "1hrMetalSmartBlock", "1hrMetalSmartBlock", "1hrClassicalSmartBlock", "1hrClassicalSmartBlock", "1hrJazzSmartBlock", "1hrJazzSmartBlock", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrRockSmartBlock", "1hrRockSmartBlock", "1hrCountrySmartBlock", "1hrCountrySmartBlock", "1hrSmartBlockPop", "1hrSmartBlockPop", "1hrAltIndie",  "1hrAltIndie", "1hrAltIndie", "1hrAltIndie", "1hrRhythmSmartBlock"]
 
 #take arg for what day in advance to fill
 day_advance = ARGV[0].to_i
@@ -127,7 +127,8 @@ shows.each do |val|
   bx.wait_until_present
   bx.click
   puts "clicked"
-  browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").send_keys val
+  valueToSend = "2hr" + val
+  browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").send_keys valueToSend
   sleep(1)
 
   #click the block
