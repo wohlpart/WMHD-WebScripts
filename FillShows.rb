@@ -3,7 +3,7 @@ require 'headless'
 puts "starting"
 #to run, call with command line args for num of days to advance, usrname, password
 
-shows = ["RapHipHop", "Metal", "Everything", "Classical", "Jazz", "Pop", "Rock", "Everything", "Country", "Electronic", "Pop", "Rock", "Alt"]
+shows = ["RapHipHop", "RapHipHop", "Metal", "Metal", "Everything", "Everything", "Classical", "Classical", "Jazz", "Jazz", "Pop", "Rock", "Everything", "Everything", "Country", "Country", "Electronic", "Electronic", "Pop", "Pop", "Rock", "Rock", "Alt", "Alt"]
 #shows = ["1hrRhythmSmartBlock", "1hrRhythmSmartBlock", "1hrElectronicSmartBlock",  "1hrElectronicSmartBlock", "1hrMetalSmartBlock", "1hrMetalSmartBlock", "1hrClassicalSmartBlock", "1hrClassicalSmartBlock", "1hrJazzSmartBlock", "1hrJazzSmartBlock", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrRockSmartBlock", "1hrRockSmartBlock", "1hrCountrySmartBlock", "1hrCountrySmartBlock", "1hrSmartBlockPop", "1hrSmartBlockPop", "1hrAltIndie",  "1hrAltIndie", "1hrAltIndie", "1hrAltIndie", "1hrRhythmSmartBlock"]
 
 #take arg for what day in advance to fill
