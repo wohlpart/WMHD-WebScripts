@@ -112,35 +112,6 @@ def fill_shows(shows)
     #send search terms
     search = browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input")
     search.wait_until_present
-    search.send_keys "WMHDRadio1"
-
-    #click checkbox
-    sleep(1)
-    if !clicked
-      ckbox = browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']")
-      ckbox.wait_until_present
-      ckbox.click
-      clicked = true
-    end
-
-    #attempt to add to show. if failed is because show is full, will continue
-    begin
-      calBtn = browser.button(:id, "library-plus")
-      calBtn.wait_until_present
-      calBtn.click
-    rescue Watir::Exception::ObjectDisabledException
-      #continue
-    end
-
-    browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").to_subtype.clear
-    #search.to_subtype.clear
-
-
-    sleep(1)
-
-    #add chapmn tagline
-    search = browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input")
-    search.wait_until_present
     search.send_keys "community"
 
     #click checkbox
@@ -163,9 +134,9 @@ def fill_shows(shows)
 
     browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").to_subtype.clear
     #search.to_subtype.clear
-    sleep(1)
 
-    #search for smart block
+
+       #search for smart block
     #select smart block type
     browser.element(:xpath, "//select[@name = 'library_display_type']").option(:value, "3").click
     sleep(1)
