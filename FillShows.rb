@@ -135,6 +135,37 @@ def fill_shows(shows)
     browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").to_subtype.clear
     #search.to_subtype.clear
 
+    #add chapman tagline
+    #click on search box and then send
+    bx = browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input")
+    bx.wait_until_present
+    bx.click
+    puts "clicked"
+    valueToSend = "community announ"
+    browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").send_keys valueToSend
+    sleep(1)
+
+    #click the block
+    block = browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']")
+    block.wait_until_present
+    block.click
+
+    #attempt to add to show. if failed show is full
+    begin
+      addBtn = browser.button(:id, "library-plus")
+      addBtn.wait_until_present
+      addBtn.click
+    rescue Watir::Exception::ObjectDisabledException
+      #continue
+    end
+    sleep(1)
+
+    #unclick box
+    unblock = browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']")
+    unblock.wait_until_present
+    unblock.click
+
+
     #search for smart block
     #select smart block type
     browser.element(:xpath, "//select[@name = 'library_display_type']").option(:value, "3").click
