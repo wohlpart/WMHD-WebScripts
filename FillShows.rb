@@ -5,7 +5,7 @@ puts "starting"
 
 shows = ["RapHipHop", "RapHipHop", "Metal", "Metal", "Everything", "Everything", "Classical", "Classical", "Jazz", "Jazz", "Pop", "Rock", "Everything", "Everything", "Country", "Country", "Electronic", "Electronic", "Pop", "Pop", "Rock", "Rock", "Alt", "Alt"]
 #shows = ["1hrRhythmSmartBlock", "1hrRhythmSmartBlock", "1hrElectronicSmartBlock",  "1hrElectronicSmartBlock", "1hrMetalSmartBlock", "1hrMetalSmartBlock", "1hrClassicalSmartBlock", "1hrClassicalSmartBlock", "1hrJazzSmartBlock", "1hrJazzSmartBlock", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrSmartBlockEverything", "1hrRockSmartBlock", "1hrRockSmartBlock", "1hrCountrySmartBlock", "1hrCountrySmartBlock", "1hrSmartBlockPop", "1hrSmartBlockPop", "1hrAltIndie",  "1hrAltIndie", "1hrAltIndie", "1hrAltIndie", "1hrRhythmSmartBlock"]
-fill_shows(shows)
+
 
 def login(browser, usrnm, pswd,count)
   if count <= 5 then
@@ -216,3 +216,4 @@ def fill_shows(shows)
   browser.close
   headless.destroy
 end
+fill_shows(shows)
