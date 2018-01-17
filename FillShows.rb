@@ -135,36 +135,35 @@ def fill_shows(shows)
     browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").to_subtype.clear
     #search.to_subtype.clear
 
-    #add chapman tagline
-    #click on search box and then send
-    bx = browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input")
-    bx.wait_until_present
-    bx.click
-    puts "clicked"
-    valueToSend = "community announ"
-    browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").send_keys valueToSend
+
     sleep(1)
 
-    #click the block
-    block = browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']")
-    block.wait_until_present
-    block.click
+    #add chapmn tagline
+    search = browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input")
+    search.wait_until_present
+    search.send_keys "community"
 
-    #attempt to add to show. if failed show is full
+    #click checkbox
+    sleep(1)
+    if !clicked
+      ckbox = browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']")
+      ckbox.wait_until_present
+      ckbox.click
+      clicked = true
+    end
+
+    #attempt to add to show. if failed is because show is full, will continue
     begin
-      addBtn = browser.button(:id, "library-plus")
-      addBtn.wait_until_present
-      addBtn.click
+      calBtn = browser.button(:id, "library-plus")
+      calBtn.wait_until_present
+      calBtn.click
     rescue Watir::Exception::ObjectDisabledException
       #continue
     end
+
+    browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input").to_subtype.clear
+    #search.to_subtype.clear
     sleep(1)
-
-    #unclick box
-    unblock = browser.element(:xpath, "//td[@class = 'library_checkbox']/input[@type = 'checkbox']")
-    unblock.wait_until_present
-    unblock.click
-
 
     #search for smart block
     #select smart block type
