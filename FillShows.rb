@@ -112,7 +112,7 @@ def fill_shows(shows)
     #send search terms
     search = browser.element(:xpath, "//div[@class = 'dataTables_filter']/label/input")
     search.wait_until_present
-    search.send_keys "community"
+    search.send_keys "WMHDRadio1"
 
     #click checkbox
     sleep(1)
